@@ -56,10 +56,10 @@ class CitasSearch extends Citas
                 $q->joinWith('especialidad ed');
             }]);
         // add conditions that should always apply here
-        $query->where(['usuario_id' => Yii::$app->user->id])
-            ->andWhere('instante > LOCALTIMESTAMP');
-
-
+        $query->where(['usuario_id' => Yii::$app->user->id]);
+        $consulta = isset($params['actual']) ? '<' : '>';
+        $query->andWhere('instante' . $consulta . 'LOCALTIMESTAMP');
+        a:;
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);

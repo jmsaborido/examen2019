@@ -48,6 +48,16 @@ class CitasController extends Controller
             'dataProvider' => $dataProvider,
         ]);
     }
+    public function actionHistorial()
+    {
+        $searchModel = new CitasSearch();
+        $dataProvider = $searchModel->search(array_merge(Yii::$app->request->queryParams, ['actual' => false]));
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+    }
 
     /**
      * Displays a single Citas model.
