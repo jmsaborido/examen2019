@@ -14,7 +14,7 @@ use Yii;
  * @property string $telefono
  * @property string $poblacion
  */
-class Usuarios extends \yii\db\ActiveRecord
+class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -49,5 +49,38 @@ class Usuarios extends \yii\db\ActiveRecord
             'telefono' => 'Teléfono',
             'poblacion' => 'Población',
         ];
+    }
+    public static function findIdentity($id)
+    {
+        return static::findOne($id);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        return true;
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        return true;
+    }
+
+    public static function findPorNombre($nombre)
+    {
+        return static::findOne(['nombre' => $nombre]);
+    }
+
+    public function validatePassword($password)
+    {
+        return Yii::$app->security->validatePassword($password, $this->password);
     }
 }

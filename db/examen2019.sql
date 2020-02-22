@@ -44,4 +44,4 @@ INSERT INTO especialistas (nombre, especialidad_id, hora_minima, hora_maxima, du
     VALUES ('Juan Pastor', 1, '15:00', '20:00', 'PT15M'), ('Francisco Reyes', 2, '17:00', '20:30', 'PT10M'), ('Antonio Díaz', 1, '16:00', '21:00', 'PT20M'), ('Francisco Montaño', 2, '17:00', '22:00', 'PT15M');
 
 INSERT INTO citas (usuario_id, especialista_id, instante)
-    VALUES (1, 1, '2019-03-08 15:00:00'), (2, 1, '2019-03-08 15:15:00'), (1, 2, '2019-03-08 17:00:00');
+    VALUES (1, 1, '2020-03-08 15:00:00'), (2, 1, '2020-03-08 15:15:00'), (1, 2, '2020-03-08 17:00:00');
