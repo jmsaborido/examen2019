@@ -43,6 +43,14 @@ class Especialidades extends \yii\db\ActiveRecord
             'especialidad' => 'Especialidad',
         ];
     }
+    public static function lista()
+    {
+        return static::find()
+            ->select('especialidad')
+            ->orderBy('especialidad')
+            ->indexBy('id')
+            ->column();
+    }
 
     /**
      * Gets query for [[Especialistas]].

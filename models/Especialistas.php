@@ -81,4 +81,13 @@ class Especialistas extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Especialidades::className(), ['id' => 'especialidad_id'])->inverseOf('especialistas');
     }
+    public static function lista($especialidad_id)
+    {
+        return static::find()
+            ->select('nombre')
+            ->where(['especialidad_id' => $especialidad_id])
+            ->orderBy('nombre')
+            ->indexBy('id')
+            ->column();
+    }
 }

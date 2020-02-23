@@ -39,13 +39,13 @@ $this->params['breadcrumbs'][] = $this->title;
                     'delete' => function ($url, $model, $key) {
                         return Html::a(
                             'Anular',
-                            ['citas/delete', 'id' => $model->id],
+                            ['citas/delete', 'id' => $key],
                             [
                                 'data-method' => 'POST',
                                 'data-confirm' => '¿Seguro que desea anular la cita?',
                             ]
                         );
-                    }
+                    },
                 ],
             ],
         ],

@@ -12,7 +12,6 @@ use yii\bootstrap4\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'usuario_id')->textInput() ?>
 
     <?= $form->field($model, 'especialista_id')->textInput() ?>
 

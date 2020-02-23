@@ -83,4 +83,14 @@ class Usuarios extends \yii\db\ActiveRecord implements \yii\web\IdentityInterfac
     {
         return Yii::$app->security->validatePassword($password, $this->password);
     }
+
+    public function getCitas()
+    {
+        return $this->hasMany(Citas::className(), ['usuario_id' => 'id'])->inverseOf('usuario');
+    }
+
+    public function getCitasPendientes()
+    {
+        return $this->getCitas()->andOnCondition('instante >= localtimestamp');
+    }
 }

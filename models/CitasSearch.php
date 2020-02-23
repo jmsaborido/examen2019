@@ -101,7 +101,10 @@ class CitasSearch extends Citas
                 'ilike',
                 'ea.nombre',
                 $this->getAttribute('especialista.nombre'),
-            ]);
+            ])->andFilterWhere(
+                ['especialista_id' => $this->especialista_id],
+            );
+
         return $dataProvider;
     }
 }
