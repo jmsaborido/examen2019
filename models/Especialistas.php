@@ -26,6 +26,10 @@ class Especialistas extends \yii\db\ActiveRecord
     {
         return 'especialistas';
     }
+    public function attributes()
+    {
+        return array_merge(parent::attributes(), ['especialidad.especialidad']);
+    }
 
     /**
      * {@inheritdoc}

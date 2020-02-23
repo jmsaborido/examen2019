@@ -48,6 +48,7 @@ class EspecialidadesSearch extends Especialidades
             'query' => $query,
         ]);
 
+
         $this->load($params);
 
         if (!$this->validate()) {

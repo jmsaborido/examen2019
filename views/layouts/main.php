@@ -44,8 +44,10 @@ AppAsset::register($this);
             'options' => ['class' => 'navbar-nav'],
             'items' => [
                 ['label' => 'Home', 'url' => ['/site/index']],
-                ['label' => 'About', 'url' => ['/site/about']],
-                ['label' => 'Contact', 'url' => ['/site/contact']],
+                ['label' => 'Citas', 'url' => ['/citas/index']],
+                ['label' => 'Historial', 'url' => ['/citas/historial']],
+                ['label' => 'Especialistas', 'url' => ['/especialistas/index']],
+                ['label' => 'Especialidades', 'url' => ['/especialidades/index']],
                 Yii::$app->user->isGuest ? (['label' => 'Login', 'url' => ['/site/login']]) : ('<li class="nav-item">'
                     . Html::beginForm(['/site/logout'], 'post')
                     . Html::submitButton(

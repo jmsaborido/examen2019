@@ -18,7 +18,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create Especialistas', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]);
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -26,9 +27,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
+
             'nombre',
-            'especialidad_id',
+            'especialidad.especialidad',
             'hora_minima',
             'hora_maxima',
             //'duracion',

@@ -18,7 +18,7 @@ class EspecialistasSearch extends Especialistas
     {
         return [
             [['id', 'especialidad_id'], 'integer'],
-            [['nombre', 'hora_minima', 'hora_maxima', 'duracion'], 'safe'],
+            [['nombre', 'hora_minima', 'hora_maxima', 'duracion', 'especialidad.especialidad'], 'safe'],
         ];
     }
 
@@ -40,13 +40,17 @@ class EspecialistasSearch extends Especialistas
      */
     public function search($params)
     {
-        $query = Especialistas::find();
+        $query = Especialistas::find()->joinWith('especialidad e');
 
         // add conditions that should always apply here
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
+        $dataProvider->sort->attributes['especialidad.especialidad'] = [
+            'asc' => ['e.especialidad' => SORT_ASC],
+            'desc' => ['e.especialidad' => SORT_DESC],
+        ];
 
         $this->load($params);
 
@@ -65,7 +69,9 @@ class EspecialistasSearch extends Especialistas
         ]);
 
         $query->andFilterWhere(['ilike', 'nombre', $this->nombre])
-            ->andFilterWhere(['ilike', 'duracion', $this->duracion]);
+            ->andFilterWhere(['ilike', 'duracion', $this->duracion])
+            ->andFilterWhere(['ilike', 'e.especialidad', $this->getAttribute('especialidad.especialidad')]);
+
 
         return $dataProvider;
     }
