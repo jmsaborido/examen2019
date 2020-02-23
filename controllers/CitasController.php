@@ -140,7 +140,13 @@ class CitasController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        $model = Citas::findOne(['id' => $id]);
+
+        if ($model->instante > date('Y-m-d H:i:s')) {
+            $model->delete();
+        } else {
+            Yii::$app->session->setFlash('error', 'No puedes borrar una cita pasada ');
+        }
 
         return $this->redirect(['index']);
     }

@@ -35,6 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
             [
                 'class' => 'yii\grid\ActionColumn',
+                'template' => '{delete}',
                 'buttons' => [
                     'delete' => function ($url, $model, $key) {
                         return Html::a(
